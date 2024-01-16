@@ -1,6 +1,6 @@
 {
   "name": "open-delivery-validator-web",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "cypress": "cypress run",
     "cypress:open": "cypress open",
@@ -9,7 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
-    "deploy": "ng build --base-href=https://gui-camargo.github.io/opendelivery-api-schema-validator/"
+    "deploy": "ng build --base-href=https://abrasel-nacional.github.io/opendelivery-api-schema-validator/"
   },
   "private": true,
   "dependencies": {
