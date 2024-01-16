@@ -12,24 +12,26 @@
 <br />
 <div align="center">
 
-  <a href="https://github.com/ProgrammersIT/opendelivery-api-schema-validator/">
-    <img src="https://media-exp1.licdn.com/dms/image/C560BAQE0V2eaYs129g/company-logo_200_200/0/1646824691943?e=2147483647&v=beta&t=Obiug5sFxzGxo7xcTnrmjZoFNqACm1kD3rkQnGfAhnY" alt="Logo" width="200" height="200">
+  <a href="https://www.opendelivery.com.br/">
+    <img src="https://user-images.githubusercontent.com/129890133/231524311-e4b8070d-ba66-42f8-bf1c-5607b9df9850.png" alt="Logo">
   </a>
   <h3 align="center">Open Delivery Schema Validator</h3>
 
   <p align="center">
     A tool to help you be fully compliant with the <a href="https://abrasel-nacional.github.io/docs/">Open Delivery</a> standard.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Try it out!»</strong></a>
+    <a href="https://abrasel-nacional.github.io/opendelivery-api-schema-validator/"><strong>Try it out!»</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/Abrasel-Nacional/opendelivery-api-schema-validator/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/Abrasel-Nacional/opendelivery-api-schema-validator/issues">Request Feature</a>
   </p>
+
+_This is a fork of https://github.com/ProgrammersIT/opendelivery-api-schema-validator which is deprecated_.
 </div>
 
-
+---
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -54,9 +56,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://programmersit.github.io/opendelivery-api-schema-validator/)
+[![Product Name Screen Shot][product-screenshot]](https://abrasel-nacional.github.io/opendelivery-api-schema-validator/)
 
-Open Delivery Schema Validator is a tool that was created to help developers who are creating or adapting their system's APIs to the Open Delivery standard. 
+**Open Delivery Schema Validator** is a tool that was created to help developers who are creating or adapting their system's APIs to the Open Delivery standard. 
 
 With this tool it is possible to validate that a JSON is following the Open Delivery schema routes according to the project's documentation.
 
@@ -78,8 +80,6 @@ Available routes:
 
 ### Built With
 
-
-* [![React][React.js]][React-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![TypeScript][Typescriptlang.org]][Typescriptlang-url]
 
@@ -150,16 +150,8 @@ TBD
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
-## Contact
 
-Programmer's Beyond IT - [Linkedin](https://www.linkedin.com/company/programmersbeyondit/) | [Instagram](https://www.instagram.com/programmers_beyond_it/)
-
-Project Link: https://github.com/ProgrammersIT/opendelivery-api-schema-validator
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
