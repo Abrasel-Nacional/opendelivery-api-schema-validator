@@ -1,0 +1,385 @@
+{
+    "response": {
+        "type": "object",
+        "required": [
+            "deliveryId",
+            "event",
+            "completion"
+        ],
+        "properties": {
+            "deliveryId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "event": {
+                "type": "string",
+                "enum": [
+                    "PENDING",
+                    "ACCEPTED",
+                    "REJECTED",
+                    "PICKUP_ONGOING",
+                    "ARRIVED_AT_MERCHANT",
+                    "ORDER_PICKED",
+                    "DELIVERY_ONGOING",
+                    "ARRIVED_AT_CUSTOMER",
+                    "ORDER_DELIVERED",
+                    "RETURNING_TO_MERCHANT",
+                    "RETURNED_TO_MERCHANT",
+                    "DELIVERY_FINISHED",
+                    "CANCELLED"
+                ]
+            },
+            "completion": {
+                "type": "object",
+                "properties": {
+                    "estimate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "rejectAfter": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "deliveryDetailsURL": {
+                "type": "string",
+                "format": "uri"
+            }
+        }
+    },
+    "request": {
+        "type": "object",
+        "required": [
+            "orderId",
+            "orderDisplayId",
+            "merchant",
+            "pickupAddress",
+            "returnToMerchant",
+            "canCombine",
+            "deliveryAddress",
+            "customerName",
+            "vehicle",
+            "limitTimes",
+            "totalOrderPrice",
+            "totalWeight",
+            "payments"
+        ],
+        "properties": {
+            "orderId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "orderDisplayId": {
+                "type": "string"
+            },
+            "merchant": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "maxLength": 100
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "pickupAddress": {
+                "type": "object",
+                "required": [
+                    "country",
+                    "state",
+                    "city",
+                    "district",
+                    "street",
+                    "number",
+                    "postalCode",
+                    "complement"
+                ],
+                "properties": {
+                    "country": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "number": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "complement": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "pickupLocation": {
+                        "type": "string"
+                    },
+                    "parkingSpace": {
+                        "type": "boolean"
+                    },
+                    "instructions": {
+                        "type": "string"
+                    }
+                }
+            },
+            "notifyPickup": {
+                "type": "boolean"
+            },
+            "notifyConclusion": {
+                "type": "boolean"
+            },
+            "returnToMerchant": {
+                "type": "boolean"
+            },
+            "canCombine": {
+                "type": "boolean"
+            },
+            "deliveryAddress": {
+                "type": "object",
+                "required": [
+                    "country",
+                    "state",
+                    "city",
+                    "district",
+                    "street",
+                    "number",
+                    "postalCode",
+                    "complement"
+                ],
+                "properties": {
+                    "country": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "number": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "complement": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "instructions": {
+                        "type": "string"
+                    }
+                }
+            },
+            "customerName": {
+                "type": "string"
+            },
+            "vehicle": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "container"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "MOTORBIKE_BAG",
+                                "MOTORBIKE_BOX",
+                                "CAR",
+                                "BICYCLE",
+                                "SCOOTER",
+                                "VUC"
+                            ]
+                        }
+                    },
+                    "container": {
+                        "type": "string",
+                        "enum": [
+                            "NORMAL",
+                            "THERMIC"
+                        ]
+                    },
+                    "containerSize": {
+                        "type": "string",
+                        "enum": [
+                            "SMALL",
+                            "MEDIUM",
+                            "LARGE",
+                            "EXTRA_LARGE"
+                        ]
+                    },
+                    "instruction": {
+                        "type": "string"
+                    }
+                }
+            },
+            "limitTimes": {
+                "type": "object",
+                "properties": {
+                    "pickupLimit": {
+                        "type": "integer"
+                    },
+                    "deliveryLimit": {
+                        "type": "integer"
+                    },
+                    "orderCreatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "totalOrderPrice": {
+                "type": "object",
+                "required": [
+                    "value",
+                    "currency"
+                ],
+                "properties": {
+                    "value": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "currency": {
+                        "type": "string"
+                    }
+                }
+            },
+            "totalWeight": {
+                "type": "integer"
+            },
+            "packageVolume": {
+                "type": "number"
+            },
+            "packageQuantity": {
+                "type": "integer"
+            },
+            "specialInstructions": {
+                "type": "string"
+            },
+            "additionalPricePercentual": {
+                "type": "number",
+                "format": "double"
+            },
+            "payments": {
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "enum": [
+                            "OFFLINE",
+                            "ONLINE"
+                        ]
+                    },
+                    "wirelessPos": {
+                        "type": "boolean"
+                    },
+                    "offlineMethod": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "CREDIT",
+                                        "DEBIT",
+                                        "MEAL_VOUCHER",
+                                        "FOOD_VOUCHER",
+                                        "PIX",
+                                        "CASH",
+                                        "CREDIT_DEBIT",
+                                        "OTHER"
+                                    ]
+                                },
+                                "amount": {
+                                    "type": "object",
+                                    "required": [
+                                        "value",
+                                        "currency"
+                                    ],
+                                    "properties": {
+                                        "value": {
+                                            "type": "number",
+                                            "format": "double"
+                                        },
+                                        "currency": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "change": {
+                        "type": "object",
+                        "required": [
+                            "value",
+                            "currency"
+                        ],
+                        "properties": {
+                            "value": {
+                                "type": "number",
+                                "format": "double"
+                            },
+                            "currency": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "combinedOrdersIds": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        }
+    }
+}

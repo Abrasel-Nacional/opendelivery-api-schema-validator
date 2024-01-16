@@ -1,4 +1,5 @@
 export enum HTTPMethodEnum {
     GET = 'GET',
-    POST = 'POST'
+    POST = 'POST',
+    PUT = 'PUT'
 }

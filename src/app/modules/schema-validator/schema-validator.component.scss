@@ -1,6 +1,6 @@
 #container {
   font-size: 1rem;
-  padding: 1rem 3rem;
+  padding: 3rem 3rem;
   display: flex;
   flex-direction: column;
 
@@ -85,4 +85,53 @@
 
 .type-method.POST {
   background-color: rgb(46, 46, 177);
+}
+
+.type-method.PUT {
+  background-color: rgb(149, 80, 124);
+}
+
+.usage-text {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  color: darkslategray;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+
+  span {
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+  }
+}
+
+.about-text {
+  color: darkslategray;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  margin-top: -1rem;
+
+  span {
+    font-weight: bold;
+    font-size: larger;
+    font-family: 'Rubik', sans-serif;
+  }
+}
+
+.about-ul {
+  margin: 0 0 0;
+  margin-bottom: 1rem;
+  color: darkslategray;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Rubik', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: black;
+  font-size: 16px;
 }

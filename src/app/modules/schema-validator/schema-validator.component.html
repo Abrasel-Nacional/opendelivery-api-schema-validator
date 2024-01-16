@@ -1,5 +1,24 @@
 <div id="container">
-
+  <h2>About The Project</h2>
+  <p class="usage-text"><span class="title-text">Open Delivery Schema Validator </span> is a tool that was created to
+    help developers who are creating or adapting their
+    system&#39;s APIs to the <a target="_blank" href="https://www.opendelivery.com.br">Open Delivery</a> standard.
+    <br>With this tool it is possible to validate that a JSON is following the Open Delivery schemas, according to
+    the
+    project&#39;s <a target="_blank" href="https://abrasel-nacional.github.io/docs/">documentation</a>.
+  </p>
+  <p class="about-text">Currently the tool can validate:</p>
+  <ul class="about-ul">
+    <li>Required fields</li>
+    <li>Field types</li>
+    <li>Field formats (such as date-time)</li>
+    <li>Enumerators</li>
+  </ul>
+  <h2>Usage:</h2>
+  <p class="usage-text">1 - Select the route you wish to validate;
+    <br>2 - Select whether you want to validate the request or the response schema of the chosen route;
+    <br>3 - Paste the JSON you want to validate into the textarea and click Validate.
+  </p>
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-routes" appearance="outline">
       <mat-label>Select Route: </mat-label>
@@ -14,7 +33,7 @@
         </mat-select-trigger>
         <mat-option (click)="enableSolicitationTypeButton()"></mat-option>
 
-        <mat-optgroup *ngFor="let entity of getEntityGroups" [label]="entity.name" >
+        <mat-optgroup *ngFor="let entity of getEntityGroups" [label]="entity.name">
           <mat-option *ngFor="let endpoint of entity.endpoint" [value]="[entity.id,endpoint.id]"
             (click)="setSelectedEndpoint(endpoint)">
             <span class="type-method {{endpoint.type}}"> {{endpoint.type}} </span>
@@ -37,11 +56,13 @@
     <span class="label">COPY YOUR JSON TEXT HERE<span
         class="nameEndpointSelected">{{selectedEndpoint.endpoint}}</span></span>
     <mat-form-field appearance="outline">
-      <textarea formControlName="json" data-cy="json-area" matInput name="" id="json" placeholder="{}" cols="50" rows="15"></textarea>
+      <textarea formControlName="json" data-cy="json-area" matInput name="" id="json" placeholder="{}" cols="50"
+        rows="15"></textarea>
       <mat-error *ngIf="formControls.json.invalid">Please inform the JSON you want to
         validade</mat-error>
     </mat-form-field>
-    <button class="btn-validate" data-cy="submit" type="submit" disabled="{{!form.valid}}" mat-raised-button>Validate</button>
+    <button class="btn-validate" data-cy="submit" type="submit" disabled="{{!form.valid}}"
+      mat-raised-button>Validate</button>
   </form>
 
   <div *ngIf="showResult">
