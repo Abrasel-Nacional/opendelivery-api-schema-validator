@@ -44,6 +44,7 @@ export class ValidatorService {
             return false
         }
 
+
         let schema = this.schemaService.getSchema(solicitationType, solicitationEndpointId, solicitationEntityId);
         return this.validateJsonToSchema(json, schema);
     }

@@ -12,6 +12,7 @@ export interface IEndpoint {
     type: string
     name: string
     id: number
+    validationType: number
     validation: IValidation
 }
 

@@ -13,4 +13,5 @@ export class FooterComponent implements OnInit {
   }
 
   readonly PROGRAMMERS_LOGO_PATH: string = "assets/images/logo/programmers-branco.webp";
+  readonly ABRASEL_LOGO_PATH: string = "assets/images/logo/logo-abrasel-branco.png";
 }

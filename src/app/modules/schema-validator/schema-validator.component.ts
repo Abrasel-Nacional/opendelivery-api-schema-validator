@@ -87,23 +87,29 @@ export class SchemaValidatorComponent implements OnInit {
       endpoint: endpoint.name,
       type: endpoint.type
     }
-    this.disableSolicitationTypeButton(this.isGet(endpoint.type))
+    this.disableSolicitationTypeButton(endpoint.validationType)
   }
 
-  isGet(endpointType: string): boolean {
-    return endpointType === HTTPMethodEnum.GET
-  }
-
-  disableSolicitationTypeButton(isGet: boolean): void {
-    if (isGet) {
-      this.formControls.solicitationType.setValue(TypeSolicitationEnum.Response)
-      this.formControls.solicitationType.disable()
-      return
+  disableSolicitationTypeButton(validationType: number): void
+  {
+    switch (validationType)
+    {
+      case TypeSolicitationEnum.Request:
+        this.formControls.solicitationType.setValue(TypeSolicitationEnum.Request)
+        this.formControls.solicitationType.disable()
+        break;
+      case TypeSolicitationEnum.Response:
+        this.formControls.solicitationType.setValue(TypeSolicitationEnum.Response)
+        this.formControls.solicitationType.disable()
+        break;
+      default:
+        this.enableSolicitationTypeButton()
+        break;
     }
-    this.enableSolicitationTypeButton()
   }
 
   enableSolicitationTypeButton(): void {
     this.formControls.solicitationType.enable()
+    this.formControls.solicitationType.setValue("");
   }
 }

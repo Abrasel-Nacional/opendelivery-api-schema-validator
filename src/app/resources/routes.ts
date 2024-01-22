@@ -16,9 +16,90 @@ import { EntityIdEnum } from './entity-id';
 import { EndpointIdEnum } from './endpoint-id';
 import { IResource } from '../modules/models/entity-group';
 import { HTTPMethodEnum } from '../modules/models/enums/http-method';
+import { TypeSolicitationEnum } from '../modules/models/enums/type-solicitation';
 
 export const resource: IResource = {
   entities: [
+    {
+      name: 'Order',
+      id: EntityIdEnum.Order,
+      endpoint: [
+        {
+          type: HTTPMethodEnum.GET,
+          name: '/v1/orders/{orderId}',
+          id: EndpointIdEnum.orderDetails,
+          validationType: TypeSolicitationEnum.Response,
+          validation: _orderDetails,
+        },
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/{orderId}/confirm',
+          id: EndpointIdEnum.orderConfirm,
+          validationType: TypeSolicitationEnum.Request,
+          validation: _orderConfirm,
+        },
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/{orderId}/readyForPickup',
+          id: EndpointIdEnum.orderReadyForPickup,
+          validationType: TypeSolicitationEnum.Both,
+          validation: _orderReadyForPickup,
+        },
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/{orderId}/dispatch',
+          id: EndpointIdEnum.orderDispatch,
+          validationType: TypeSolicitationEnum.Both,
+          validation: _orderDispatch,
+        },
+      ],
+    },
+    {
+      name: 'Order Polling',
+      id: EntityIdEnum.EventsPolling,
+      endpoint: [
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/events:polling',
+          id: EndpointIdEnum.orderPolling,
+          validationType: TypeSolicitationEnum.Response,
+          validation: _orderPolling,
+        },
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/events/acknologment',
+          id: EndpointIdEnum.orderAck,
+          validationType: TypeSolicitationEnum.Request,
+          validation: _orderAck,
+        }
+      ]
+    },
+    {
+      name: 'Order Webhook',
+      id: EntityIdEnum.EventsWebhook,
+      endpoint: [
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/newEvent',
+          id: EndpointIdEnum.orderWebhook,
+          validationType: TypeSolicitationEnum.Request,
+          validation: _orderWebhook,
+        }
+      ]
+    },
+    {
+      name: 'Logistics',
+      id: EntityIdEnum.Logistics,
+      endpoint: [
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/logistics/delivery',
+          id: EndpointIdEnum.logisticsNewDelivery,
+          validationType: TypeSolicitationEnum.Both,
+          validation: _logisticsNewDelivery,
+        },
+      ],
+    },
     {
       name: 'Merchant',
       id: EntityIdEnum.Merchant,
@@ -27,6 +108,7 @@ export const resource: IResource = {
           type: HTTPMethodEnum.GET,
           name: '/v1/merchant',
           id: EndpointIdEnum.merchant,
+          validationType: TypeSolicitationEnum.Response,
           validation: _merchant,
         }, //,
         // {
@@ -41,66 +123,6 @@ export const resource: IResource = {
         //   id: EndpointIdEnum.merchantOnboard,
         //   validation: _merchantOnboard
         // }
-      ],
-    },
-    {
-      name: 'Order',
-      id: EntityIdEnum.Order,
-      endpoint: [
-        {
-          type: HTTPMethodEnum.GET,
-          name: '/v1/orders/{orderId}',
-          id: EndpointIdEnum.orderDetails,
-          validation: _orderDetails,
-        },
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/orders/events:polling',
-          id: EndpointIdEnum.orderPolling,
-          validation: _orderPolling,
-        },
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/orders/events/acknologment',
-          id: EndpointIdEnum.orderAck,
-          validation: _orderAck,
-        },
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/orders/newEvent',
-          id: EndpointIdEnum.orderWebhook,
-          validation: _orderWebhook,
-        },
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/orders/{orderId}/confirm',
-          id: EndpointIdEnum.orderConfirm,
-          validation: _orderConfirm,
-        },
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/orders/{orderId}/readyForPickup',
-          id: EndpointIdEnum.orderReadyForPickup,
-          validation: _orderReadyForPickup,
-        },
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/orders/{orderId}/dispatch',
-          id: EndpointIdEnum.orderDispatch,
-          validation: _orderDispatch,
-        },
-      ],
-    },
-    {
-      name: 'Logistics',
-      id: EntityIdEnum.Logistics,
-      endpoint: [
-        {
-          type: HTTPMethodEnum.POST,
-          name: '/v1/logistics/delivery',
-          id: EndpointIdEnum.logisticsNewDelivery,
-          validation: _logisticsNewDelivery,
-        },
       ],
     },
   ],

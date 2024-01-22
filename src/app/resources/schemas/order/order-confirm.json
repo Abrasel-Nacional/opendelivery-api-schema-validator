@@ -5,8 +5,25 @@
         "properties": null
     },
     "request": {
-        "type": null,
-        "required": null,
-        "properties": null
+        "type": "object",
+        "required": [
+            "createdAt",
+            "orderExternalCode"
+        ],
+        "properties": {
+            "reason": {
+                "type": "string"
+            },
+            "createdAt": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "orderExternalCode": {
+                "type": "string"
+            },
+            "preparationTime": {
+                "type": "integer"
+            }
+        }
     }
 }

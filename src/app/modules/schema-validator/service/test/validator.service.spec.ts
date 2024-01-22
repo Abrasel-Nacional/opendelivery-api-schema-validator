@@ -35,6 +35,7 @@ describe('ValidatorService', () => {
       type: "",
       name: "",
       id: 1,
+      validationType: TypeSolicitationEnum.Both,
       validation: mockValidation
     }]
   }]

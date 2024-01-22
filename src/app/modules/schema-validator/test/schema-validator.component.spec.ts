@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { IEntity } from '../../models/entity-group';
 import { SchemaValidatorComponent } from '../schema-validator.component';
 import { ValidatorService } from '../service/validator.service';
+import { TypeSolicitationEnum } from '../../models/enums/type-solicitation';
 
 describe('SchemaValidatorComponent', () => {
 
@@ -15,6 +16,7 @@ describe('SchemaValidatorComponent', () => {
       type: "",
       name: "",
       id: 1,
+      validationType: TypeSolicitationEnum.Both,
       validation: {
         request: {
           type: "",
