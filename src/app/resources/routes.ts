@@ -8,7 +8,10 @@ import * as _orderAck from './schemas/order/order-ack.json';
 import * as _orderWebhook from './schemas/order/order-webhook.json';
 import * as _orderConfirm from './schemas/order/order-confirm.json';
 import * as _orderDispatch from './schemas/order/order-dispatch.json';
-import * as _orderReadyForPickup from './schemas/order/order-ready-for-pickup.json';
+import * as _orderTracking from './schemas/order/order-tracking.json';
+import * as _orderCancelRequest from './schemas/order/order-cancel-request.json';
+import * as _orderCancelDeny from './schemas/order/order-cancel-deny.json';
+
 
 import * as _logisticsNewDelivery from './schemas/logistics/logistics-newDelivery.json';
 
@@ -40,18 +43,18 @@ export const resource: IResource = {
         },
         {
           type: HTTPMethodEnum.POST,
-          name: '/v1/orders/{orderId}/readyForPickup',
-          id: EndpointIdEnum.orderReadyForPickup,
-          validationType: TypeSolicitationEnum.Both,
-          validation: _orderReadyForPickup,
-        },
-        {
-          type: HTTPMethodEnum.POST,
           name: '/v1/orders/{orderId}/dispatch',
           id: EndpointIdEnum.orderDispatch,
           validationType: TypeSolicitationEnum.Both,
           validation: _orderDispatch,
         },
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/{orderId}/tracking',
+          id: EndpointIdEnum.orderTracking,
+          validationType: TypeSolicitationEnum.Request,
+          validation: _orderTracking,
+        }
       ],
     },
     {
@@ -88,6 +91,26 @@ export const resource: IResource = {
       ]
     },
     {
+      name: 'Order Cancellation',
+      id: EntityIdEnum.OrderCancellation,
+      endpoint: [
+        {
+          type: HTTPMethodEnum.GET,
+          name: '/v1/orders/{orderId}/requestCancellation',
+          id: EndpointIdEnum.orderCancelRequest,
+          validationType: TypeSolicitationEnum.Request,
+          validation: _orderCancelRequest,
+        },
+        {
+          type: HTTPMethodEnum.POST,
+          name: '/v1/orders/{orderId}/denyCancellation',
+          id: EndpointIdEnum.orderCancelDeny,
+          validationType: TypeSolicitationEnum.Request,
+          validation: _orderCancelDeny,
+        }
+      ],
+    },
+    {
       name: 'Logistics',
       id: EntityIdEnum.Logistics,
       endpoint: [
@@ -100,6 +123,7 @@ export const resource: IResource = {
         },
       ],
     },
+
     {
       name: 'Merchant',
       id: EntityIdEnum.Merchant,

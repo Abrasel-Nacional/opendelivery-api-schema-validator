@@ -1,8 +1,10 @@
 export enum EntityIdEnum {
     Merchant = 1,
     Order = 2,
-    EventsPolling = 3,
-    EventsWebhook = 4,
-    Logistics = 5
+    OrderCancellation = 3,
+    EventsPolling = 4,
+    EventsWebhook = 5,
+    Logistics = 6
+
 
 }

@@ -1,0 +1,27 @@
+{
+    "response": {
+        "type": null,
+        "required": null,
+        "properties": null
+    },
+    "request": {
+        "type": "object",
+        "title": "Request Cancelled",
+        "required": [
+            "reason",
+            "code"
+        ],
+        "properties": {
+            "reason": {
+                "type": "string"
+            },
+            "code": {
+                "type": "string",
+                "enum": [
+                    "DISH_ALREADY_DONE",
+                    "OUT_FOR_DELIVERY"
+                ]
+            }
+        }
+    }
+}

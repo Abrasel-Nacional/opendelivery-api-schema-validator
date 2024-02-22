@@ -1,0 +1,201 @@
+{
+    "response": {
+        "type": null,
+        "required": null,
+        "properties": null
+    },
+    "request": {
+        "type": "object",
+        "required": [
+            "deliveryTrackingInfo"
+        ],
+        "properties": {
+            "deliveryTrackingInfo": {
+                "type": "object",
+                "properties": {
+                    "event": {
+                        "type": "object",
+                        "required": [
+                            "type",
+                            "datetime"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "PICKUP_ONGOING",
+                                    "ARRIVED_AT_MERCHANT",
+                                    "ORDER_PICKED",
+                                    "DELIVERY_ONGOING",
+                                    "ARRIVED_AT_CUSTOMER",
+                                    "ORDER_DELIVERED",
+                                    "CANCELLED"
+                                ]
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "datetime": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    },
+                    "problem": {
+                        "type": "object",
+                        "required": [
+                            "reason",
+                            "datetime"
+                        ],
+                        "properties": {
+                            "reason": {
+                                "type": "string",
+                                "enum": [
+                                    "DELIVERYPERSON_OCCURRENCE",
+                                    "PAYMENT_PROBLEMS",
+                                    "WRONG_PRODUCT_OR_ITEM",
+                                    "ORDER_DELAYED",
+                                    "ORDER_DAMAGED_OR_VIOLATED",
+                                    "CUSTOMER_DID_NOT_PLACE_ORDER",
+                                    "CUSTOMER_ADDRESS_UNKNOWN",
+                                    "ORDER_MISSING_ITEMS",
+                                    "NOBODY_TO_RECEIVE",
+                                    "DELIVERYPERSON_WAITING_PAYMENT_FOR_ALREADY_PAID_ORDER",
+                                    "ORDER_DELIVERED_WITHOUT_PAYMENT",
+                                    "FRAUD_OR_THEFT"
+                                ]
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "datetime": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    },
+                    "vehicle": {
+                        "type": "object",
+                        "required": [
+                            "type"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "MOTORBIKE_BAG",
+                                        "MOTORBIKE_BOX",
+                                        "CAR",
+                                        "BICYCLE",
+                                        "SCOOTER",
+                                        "VUC"
+                                    ]
+                                },
+                                "maxItems": 10
+                            },
+                            "licencePlate": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "eta": {
+                        "type": "object",
+                        "properties": {
+                            "pickupEtaInMinutes": {
+                                "type": "integer"
+                            },
+                            "pickupEtaDatetime": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "deliveryEtaInMinutes": {
+                                "type": "integer"
+                            },
+                            "deliveryEtaDatetime": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "maxDeliveryTime": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    },
+                    "deliveryPerson": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "pictureURL": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        }
+                    },
+                    "geoLocalization": {
+                        "type": "object",
+                        "properties": {
+                            "latitude": {
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "longitude": {
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "lastAddress": {
+                                "type": "object",
+                                "required": [
+                                    "distanceToPickup",
+                                    "distanceToDelivery",
+                                    "timestamp"
+                                ],
+                                "properties": {
+                                    "country": {
+                                        "type": "string",
+                                        "pattern": "^[A-Z]{2}$"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "district": {
+                                        "type": "string"
+                                    },
+                                    "street": {
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "type": "string"
+                                    },
+                                    "distanceToPickup": {
+                                        "type": "string"
+                                    },
+                                    "distanceToDelivery": {
+                                        "type": "string"
+                                    },
+                                    "timestamp": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "externalTrackingURL": {
+                        "type": "string",
+                        "format": "uri"
+                    }
+                }
+            }
+        }
+    }
+}

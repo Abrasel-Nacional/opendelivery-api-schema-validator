@@ -9,5 +9,8 @@ export enum EndpointIdEnum {
     orderConfirm = 8,
     orderDispatch = 9,
     orderReadyForPickup = 10,
-    logisticsNewDelivery = 11
+    logisticsNewDelivery = 11,
+    orderCancelRequest = 12,
+    orderCancelDeny = 13,
+    orderTracking = 14
 }
